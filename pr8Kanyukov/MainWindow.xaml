@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pr8Kanyukov"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Погода Пермь" Height="450" Width="800">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="UpdateButton" 
+            Grid.Row="0"
+            Background="Pink"
+            Content="Запросить данные о погоде" 
+            Height="35" 
+            FontSize="14"
+            Margin="0,0,0,15"
+            Click="UpdateButton_Click"/>
+
+        <GroupBox Header="Данные о погоде в Перми" Grid.Row="1" Padding="10">
+            <DataGrid x:Name="WeatherDataGrid" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True"
+                  AlternatingRowBackground="LightGray"
+                  GridLinesVisibility="All"
+                  HeadersVisibility="All" Background="Pink">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Дата и время" 
+                                    Binding="{Binding DateTime}" 
+                                    Width="2*"
+                                    FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Температура" 
+                                    Binding="{Binding Temperature}" 
+                                    Width="*"
+                                    FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Давление" 
+                                    Binding="{Binding Pressure}" 
+                                    Width="*"
+                                    FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Влажность" 
+                                    Binding="{Binding Humidity}" 
+                                    Width="*"
+                                    FontWeight="Normal"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
     </Grid>
 </Window>
